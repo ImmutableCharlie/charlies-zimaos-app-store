@@ -4,7 +4,6 @@ services:
     environment:
       - PUID=0
       - PGID=0
-      - QUARKUS_HTTP_AUTH_SESSION_EXPIRATION_KEY=ReplaceWithLongRandomString # change this
     image: athou/commafeed:latest-h2
     deploy:
       resources:
@@ -39,7 +38,7 @@ x-casaos:
   author: CasaOS Team
   category: Charlie
   description:
-    en_us: A Google Reader inspired self-hosted RSS reader. Lightweight, fast, and privacy-focused.
+    en_us: A privacy-first RSS reader.
   developer: Athou
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/commafeed.png
   tagline:
