@@ -1,8 +1,8 @@
-name: glass-keep
+name: glasskeep
 services:
-  glass-keep:
+  glasskeep:
     image: nikunjsingh/glass-keep:latest
-    container_name: glass-keep
+    container_name: glasskeep
     environment:
       - PORT=8080
       - ADMIN_EMAILS=admin@example.com
@@ -14,27 +14,26 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: /DATA/AppData/glass-keep/data
+        source: /DATA/AppData/glasskeep/data
         target: /app/server/data
     x-casaos:
       ports:
         - container: "8080"
           description:
-            en_us: "Web Interface"
+            en_us: "Web Port"
       volumes:
         - container: /app/server/data
           description:
-            en_us: "App Data"
-    container_name: glass-keep
+            en_us: "Data Path"
 x-casaos:
   architectures:
     - amd64
     - arm64
-  main: glass-keep
-  author: nikunjsingh
-  category: Charlie
+  main: glasskeep
+  author: "Nikunj Singh"
+  category: "Charlie"
   description:
-    en_us: "A React-based Google Keep clone with glassmorphism UI and Markdown support."
+    en_us: "A React-based Google Keep clone with glassmorphism UI."
   developer: "Nikunj Singh"
   icon: "https://raw.githubusercontent.com/nikunjsingh93/react-glass-keep/main/public/apple-touch-icon.png"
   tagline:
@@ -42,3 +41,4 @@ x-casaos:
   title:
     en_us: "Glass Keep"
   port_map: "3015"
+  scheme: http
