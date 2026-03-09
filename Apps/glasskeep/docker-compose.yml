@@ -4,18 +4,21 @@ services:
     image: nikunjsingh/glass-keep:latest
     container_name: glass-keep
     environment:
-      # Use your admin username here to grant admin privileges upon first run
-      - ADMIN_EMAILS=admin
-      # Port inside the container is 8080
       - PORT=8080
+      - ADMIN_EMAILS=admin@example.com
+    deploy:
+      resources:
+        reservations:
+          memory: 128M
+    network_mode: bridge
     ports:
       - target: 8080
-        published: "8081"
+        published: "3007"
         protocol: tcp
+    privileged: false
     restart: unless-stopped
     volumes:
       - type: bind
-        # Stores your notes, SQLite DB, and uploaded images
         source: /DATA/AppData/glass-keep/data
         target: /app/server/data
     x-casaos:
@@ -26,21 +29,21 @@ services:
       volumes:
         - container: /app/server/data
           description:
-            en_us: "App Data & Database"
-
+            en_us: "Database and Notes Data"
+    container_name: glass-keep
 x-casaos:
   architectures:
     - amd64
     - arm64
   main: glass-keep
-  author: nikunjsingh93
+  author: nikunjsingh
   category: Charlie
   description:
-    en_us: A sleek, Google Keep-style notes app with Markdown support, checklists, and a beautiful glassy UI.
+    en_us: A React-based, Google Keep clone with a beautiful glassmorphism UI and Markdown support.
   developer: Nikunj Singh
   icon: https://raw.githubusercontent.com/nikunjsingh93/react-glass-keep/main/public/apple-touch-icon.png
   tagline:
-    en_us: Google Keep alternative with Glass Design.
+    en_us: Sleek, glass-designed personal knowledge base.
   title:
     en_us: Glass Keep
-  port_map: "8081"
+  port_map: "3007"
