@@ -6,16 +6,11 @@ services:
     environment:
       - PORT=8080
       - ADMIN_EMAILS=admin@example.com
-    deploy:
-      resources:
-        reservations:
-          memory: 128M
     network_mode: bridge
     ports:
       - target: 8080
-        published: "3007"
+        published: "3015"
         protocol: tcp
-    privileged: false
     restart: unless-stopped
     volumes:
       - type: bind
@@ -29,7 +24,7 @@ services:
       volumes:
         - container: /app/server/data
           description:
-            en_us: "Database and Notes Data"
+            en_us: "App Data"
     container_name: glass-keep
 x-casaos:
   architectures:
@@ -39,11 +34,11 @@ x-casaos:
   author: nikunjsingh
   category: Charlie
   description:
-    en_us: A React-based, Google Keep clone with a beautiful glassmorphism UI and Markdown support.
-  developer: Nikunj Singh
-  icon: https://raw.githubusercontent.com/nikunjsingh93/react-glass-keep/main/public/apple-touch-icon.png
+    en_us: "A React-based Google Keep clone with glassmorphism UI and Markdown support."
+  developer: "Nikunj Singh"
+  icon: "https://raw.githubusercontent.com/nikunjsingh93/react-glass-keep/main/public/apple-touch-icon.png"
   tagline:
-    en_us: Sleek, glass-designed personal knowledge base.
+    en_us: "Sleek glass-designed notes."
   title:
-    en_us: Glass Keep
-  port_map: "3007"
+    en_us: "Glass Keep"
+  port_map: "3015"
