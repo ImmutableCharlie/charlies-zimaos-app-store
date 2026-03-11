@@ -13,17 +13,17 @@ services:
           host: invidious-db
           port: 5432
         check_tables: true
-        hmac_key: "Kdf6X2mR7vB4gy7zL1wY"
-        invidious_companion_key: "J7dfrvN9kQ4xd4pB"
+        hmac_key: "Kdf6X2mR7vB4gy7zL1wY" # Create a random key
+        invidious_companion_key: "J7dfrvN9kQ4xd4pB" # Create a random key and ensure SERVER_SECRET_KEY is the same
         invidious_companion:
-          - private_url: "http://invidious-companion:8282"
+          - private_url: "http://invidious-companion:8282/companion"
     ports:
       - "3005:3000"
     depends_on:
       invidious-db:
         condition: service_healthy
       invidious-companion:
-        condition: service_healthy
+        condition: service_started
     networks:
       - invidious-net
     x-casaos:
@@ -43,16 +43,8 @@ services:
     cap_drop:
       - ALL
     read_only: true
-    tmpfs:
-      - /tmp
     volumes:
       - /DATA/AppData/invidious/companion-cache:/var/tmp/youtubei.js:rw
-    healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8282/"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-      start_period: 60s
 
   invidious-db:
     image: docker.io/library/postgres:14-alpine
