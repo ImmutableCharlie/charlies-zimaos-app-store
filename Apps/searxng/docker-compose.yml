@@ -5,7 +5,7 @@ services:
     container_name: searxng
     image: searxng/searxng:latest
     environment:
-      - SEARXNG_BASE_URL=http://192.168.1.XX:3025/ # Change to your ZimaOS IP
+      - SEARXNG_BASE_URL=http://192.168.1.XX:3025/ # Change to your ZimaOS IP or URL
     ports:
       - target: 8080
         published: "3025"
