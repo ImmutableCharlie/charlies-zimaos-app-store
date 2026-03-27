@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     pids_limit: 50
     mem_limit: 256mb
-    memswap_limit: 256mb
+    # memswap_limit removed to resolve memory swap conflict
     # user debian-tor from tor package
     user: whoogle
     security_opt:
@@ -43,7 +43,7 @@ services:
     #env_file: # Alternatively, load variables from whoogle.env
       #- whoogle.env
     ports:
-      - 5000:5000
+      - 4005:5000
 x-casaos:
   architectures:
     - amd64
@@ -58,4 +58,4 @@ x-casaos:
   title:
     en_us: Whoogle
   category: Charlie
-  port_map: "5000"
+  port_map: "4005"
