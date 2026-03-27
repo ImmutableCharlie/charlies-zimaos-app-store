@@ -1,15 +1,10 @@
 # Charlie's CasaOS/ZimaOS App Store
-
 It works great for me, but mileage may vary.
-
 ---
-
 ### NOTE
 * **Unique Keys:** Certain apps require unique keys and login details. Change these before completing the install.
 * **Service Reliability:** Invidious & Whoogle are regularly blocked by Google, so their reliability is unpredictable.
-
 ---
-
 | App | Description |
 | :--- | :--- |
 | **anchor** | A lightweight, self-hosted markdown note-taking app. |
@@ -22,6 +17,7 @@ It works great for me, but mileage may vary.
 | **homebox** | An inventory management system for tracking home tools and assets. |
 | **invidious** | An alternative, privacy-respecting front-end for YouTube. |
 | **karakeep** | A personal management tool for bookmarks and link organization. |
+| **libretranslate** | A free and open-source machine translation API. |
 | **microbin** | A tiny, self-hosted pastebin for sharing text and code snippets. |
 | **omnitools** | A suite of web utilities for common technical and developer tasks. |
 | **owncloud** | A suite for self-hosting file synchronization and cloud storage. |
