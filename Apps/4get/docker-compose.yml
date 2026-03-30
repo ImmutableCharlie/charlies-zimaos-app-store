@@ -5,7 +5,7 @@ services:
     image: luuul/4get:latest
     restart: unless-stopped
     ports:
-      - 4030:80
+      - 5030:80
     volumes:
       - /DATA/AppData/$AppID/config:/var/www/html/config
 
@@ -23,4 +23,4 @@ x-casaos:
   developer: 4get
   icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/4get.png
   category: Charlie
-  port_map: "4030"
+  port_map: "5030"
