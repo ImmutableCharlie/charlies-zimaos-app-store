@@ -5,7 +5,7 @@ services:
     image: rachsharp/feedbin:latest
     container_name: feedbin-web
     ports:
-      - "9292:9292"
+      - "4545:9292"
     environment:
       - SECRET_KEY_BASE=use_a_long_random_string_here
       - DATABASE_URL=postgres://feedbin:feedbin@feedbin-db:5432/feedbin_production
@@ -21,7 +21,6 @@ services:
         - container: "9292"
           description:
             en_us: "Web Interface"
-
   # Database
   feedbin-db:
     image: postgres:13-alpine
@@ -33,7 +32,6 @@ services:
     volumes:
       - /DATA/AppData/feedbin/postgres:/var/lib/postgresql/data
     restart: unless-stopped
-
   # Background Worker (Refresher)
   feedbin-refresher:
     image: rachsharp/feedbin-refresher:latest
@@ -42,7 +40,6 @@ services:
       - REDIS_URL=redis://feedbin-redis:6379
       - DATABASE_URL=postgres://feedbin:feedbin@feedbin-db:5432/feedbin_production
     restart: unless-stopped
-
   # Cache & Queue
   feedbin-redis:
     image: redis:alpine
@@ -50,7 +47,6 @@ services:
     volumes:
       - /DATA/AppData/feedbin/redis:/data
     restart: unless-stopped
-
   # Search Engine
   feedbin-search:
     image: elasticsearch:2.4.6
@@ -58,13 +54,11 @@ services:
     volumes:
       - /DATA/AppData/feedbin/elasticsearch:/usr/share/elasticsearch/data
     restart: unless-stopped
-
   # Temporary Cache
   feedbin-memcached:
     image: memcached:alpine
     container_name: feedbin-memcached
     restart: unless-stopped
-
 x-casaos:
   architectures:
     - amd64
@@ -79,4 +73,4 @@ x-casaos:
     en_us: "A nice place to read on the web."
   title:
     en_us: Feedbin
-  port_map: "9292"
+  port_map: "4545"
